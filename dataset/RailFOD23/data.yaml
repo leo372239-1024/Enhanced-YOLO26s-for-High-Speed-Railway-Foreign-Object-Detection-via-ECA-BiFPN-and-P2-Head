@@ -1,0 +1,17 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 4
+names:
+  0: "Bird's Nest"
+  1: "floating object"
+  2: "balloon"
+  3: "plastic bag"
+
+roboflow:
+  workspace: adeemvlm
+  project: railfod23
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/adeemvlm/railfod23/dataset/1

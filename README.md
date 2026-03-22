@@ -1,5 +1,41 @@
-# Enhanced-YOLO26s-for-High-Speed-Railway-Foreign-Object-Detection-via-ECA-BiFPN-and-P2-Head
-项目基于 YOLO26s 的改进版本，数据集用的是 RailFOD23 铁路异物检测数据集 。模型创新技术架构是通过引入 ECA 注意力机制、BiFPN 颈部网络 以及 P2 高分辨率检测头，提升YOLO26s模型对铁路场景中微小异物（如塑料袋、气球、鸟巢等）的检测性能，改进模型相较于Baseline，Precision提升3.47%，Recall 提升2.2%，F1提升0.6%，mAP50-95 提升2.2%，达到了77.1%。
+# RailFOD23 铁路异物检测实验项目
+
+本项目旨在对比官方 **YOLO26s** 模型与改进后的 **YOLO26s_ECA_BiFPN_P2** 模型在铁路场景下的检测性能。
+
+## 改进点
+1.  **ECA Attention (Efficient Channel Attention)**: 提升模型对小目标特征通道的重要性识别能力。
+2.  **BiFPN (Bidirectional Feature Pyramid Network)**: 实现更高效的双向特征融合。
+3.  **P2 高分辨率检测头**: 专门针对微小异物（如塑料袋、气球、鸟巢）提升检测精度。
+
+## 运行方式
+项目已实现全流程自动化，只需在项目根目录下运行：
+```bash
+python run_experiment.py
+```
+
+## 自动流程说明
+运行后程序将自动执行以下步骤：
+1.  **环境检查**: 验证 GPU、CUDA 及必要库的安装情况。
+2.  **Baseline 训练**: 使用官方 YOLO26s 权重在 RailFOD23 数据集上进行训练。
+3.  **Baseline 测试**: 在 test 集上评估基准模型。
+4.  **改进模型训练**: 加载基准权重并集成 ECA、BiFPN 及 P2 头进行训练。
+5.  **改进模型测试**: 在 test 集上评估改进模型。
+6.  **指标对比**: 自动统计各项指标并生成 `metrics.csv` 和 `metrics.xlsx`。
+7.  **自动生成论文图片**:
+    *   `train_loss_curve.png`: 训练损失曲线
+    *   `precision_recall_curve.png`: PR 曲线
+    *   `F1_curve.png`: F1 曲线
+    *   `map_comparison.png`: mAP 对比柱状图
+    *   `prediction_samples/`: 测试集检测结果可视化
+
+## 硬件建议
+*   显存: 4GB+ (已针对 RTX 3050 Laptop 优化)
+*   CUDA: 12.1+
+*   Python: 3.12.7+
+
+## 结果保存
+所有实验结果和生成的图表将保存在 `results/` 目录下。
+
    - 项目名称：基于ECA注意力机制、BiFPN特征融合与P2高分辨率检测头改进的YOLO26s高铁异物目标检测：
 - 项目简介：项目基于 YOLO26s 的改进版本，数据集用的是 RailFOD23 铁路异物检测数据集 。模型创新技术架构是通过引入 ECA 注意力机制、BiFPN 颈部网络 以及 P2 高分辨率检测头，提升YOLO26s模型对铁路场景中微小异物（如塑料袋、气球、鸟巢等）的检测性能，改进模型相较于Baseline，Precision提升3.47%，Recall 提升2.2%，F1提升0.6%，mAP50-95 提升2.2%，达到了77.1%。
 
